@@ -5,7 +5,10 @@ See assignment-01.pdf for details.
 # no imports needed.
 
 def foo(x):
-    ### TODO
+    if x <= 1:
+        return x
+    else:
+        return F(x - 1) + F(x - 2)
     pass
 
 def longest_run(mylist, key):
