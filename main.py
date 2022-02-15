@@ -9,7 +9,9 @@ def foo(x):
         return x
     else:
         return foo(x - 1) + foo(x - 2)
-    pass
+    
+    print foo(3)
+    
 
 def longest_run(mylist, key):
     ### TODO
