@@ -10,7 +10,7 @@ def foo(x):
     else:
         return foo(x - 1) + foo(x - 2)
     
-    print foo(3)
+    print foo(12)
     
 
 def longest_run(mylist, key):
