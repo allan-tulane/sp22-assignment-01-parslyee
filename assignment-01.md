@@ -2,7 +2,7 @@
 
 # CMPS 2200 Assignment 1
 
-**Name:**_________________________
+**Name:**Lily Yee
 
 
 In this assignment, you will learn more about asymptotic notation, parallelism, functional languages, and algorithmic cost models. As in the recitation, some of your answer will go here and some will go in `main.py`. You are welcome to edit this `assignment-01.md` file directly, or print and fill in by hand. If you do the latter, please scan to a file `assignment-01.pdf` and push to your github repository. 
@@ -91,6 +91,8 @@ E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`
   - 3a. (7 pts) First, implement an iterative, sequential version of `longest_run` in `main.py`.  
 
   - 3b. (4 pts) What is the Work and Span of this implementation?  
+  
+Work is W(n) = O(n) and span is S(n) = O(n) for this iterative, sequential version of longest_run.
 
 .  
 .  
@@ -106,6 +108,8 @@ E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`
   - 3c. (7 pts) Next, implement a `longest_run_recursive`, a recursive, divide and conquer implementation. This is analogous to our implementation of `sum_list_recursive`. To do so, you will need to think about how to combine partial solutions from each recursive call. Make use of the provided class `Result`.   
 
   - 3d. (4 pts) What is the Work and Span of this sequential algorithm?  
+  
+  Work is W(n) = 2W(n/2) + k and span is S(n) = 2S(n/2) + k for this algorithms. 
 .  
 .  
 .  
@@ -115,11 +119,10 @@ E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`
 .  
 .  
 .  
-.  
-.  
-
 
   - 3e. (4 pts) Assume that we parallelize in a similar way we did with `sum_list_recursive`. That is, each recursive call spawns a new thread. What is the Work and Span of this algorithm?  
+
+  Work would be W(n) = 2W(n/2) + k again, but span would be S(n) = S(n/2) + k because the list is split in 2 and worked on at the same time. 
 
 .  
 .  

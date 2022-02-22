@@ -17,13 +17,13 @@ def longest_run(mylist, key):
     count = 0
     max = 0
     for x in mylist:
-        if x == key:
-            count += 1
-            if count > max:
-                max = count
+      if x == key:
+        count += 1
+        if count > max:
+          max = count
         else:
-            count = 0
-     return max 
+          count = 0
+    return max 
 
 
 class Result:
@@ -37,14 +37,48 @@ class Result:
     def __repr__(self):
         return('longest_size=%d left_size=%d right_size=%d is_entire_range=%s' %
               (self.longest_size, self.left_size, self.right_size, self.is_entire_range))
-    
+
+def merge(result, result_):
+  if result.is_entire_range:
+    if result_.is_entire_range:
+      longestrun = result.left_size + result_.left_size
+      testres = Result(longestrun, longestrun, longestrun, True)
+      return testres
+    else:
+      leftresult = result.left_size + result_.left_size
+  else:
+    leftresult = result.left_size
+
+  if result_.is_entire_range:
+    rightresult = result.right_size + result_.left_size
+  else:
+    rightresult = result_.right_size
+
+  combine_res = result.right_size + result_.left_size
+
+  longestres = result.longest_size
+  longestres_ = result_.longest_size
+
+  maxrun = max(longestres, longestres_)
+  if combine_res > maxrun:
+    testres = Result(leftresult, rightresult, combine_res, False)
+    return testres
+  else:
+    testres = Result(leftresult, right result, maxrun, False)
+    return testres
     
 def longest_run_recursive(mylist, key):
-    ### TODO
-    pass
+  if len(mylist) == 1 and mylist[0] == key:
+    testrest = Result(1, 1, 1, True)
+  elif len(mylist) == 1 and mylist[0]!= key:
+    testres = Result(0, 0, 0, False)
+  else: 
+    listlen = len(mylist)//2
+    result = longest_run_recursive(mylist[:listlen], key)
+    result_ = longest_run_recursive(mylist[listlen:], key)
+    testres = merge(result, result_)
+    return testres
 
 ## Feel free to add your own tests here.
 def test_longest_run():
     assert longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3
-
-
